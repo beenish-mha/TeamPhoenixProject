@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-  const Recipe = sequelize.define("recipe", {
+  const Recipe = sequelize.define("Recipe", {
     name: DataTypes.STRING,
     method: DataTypes.TEXT,
     image: DataTypes.TEXT
@@ -11,6 +11,8 @@ module.exports = function(sequelize, DataTypes) {
         allowNull: false
       }
     });
+    Recipe.hasMany(models.Ingredient);
+    Recipe.hasMany(models.DietryRequriment);
   };
   return Recipe;
 };

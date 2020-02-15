@@ -29,5 +29,31 @@ CREATE TABLE user
         (id)
     );
 
+        CREATE TABLE ingredient
+        (
+            id int NOT NULL
+            AUTO_INCREMENT,
+            name VARCHAR
+            (255) NOT NULL,
+            PRIMARY KEY
+            (id)
+        );
+
+            CREATE TABLE recipe_ingredient
+            (
+                id int NOT NULL
+                AUTO_INCREMENT,
+                recipeid int NOT NULL,
+                ingredentid int NOT NULL,
+                amount VARCHAR
+                (255) NOT NULL
+                PRIMARY KEY
+                (id),
+                FOREIGN KEY
+                (recipeid),
+                FOREIGN KEY
+                (ingredentid)
+            )
+
 
 
