@@ -11,8 +11,8 @@ module.exports = function(sequelize, DataTypes) {
         allowNull: false
       }
     });
-    Recipe.hasMany(models.Ingredient);
-    Recipe.hasMany(models.DietryRequriment);
+    Recipe.belongsToMany(models.DietryRequirement, { through: "RecipeRequirement"});
+    Recipe.belongsToMany(models.Ingredient, { through: "RecipeIngredient"});
   };
   return Recipe;
 };
