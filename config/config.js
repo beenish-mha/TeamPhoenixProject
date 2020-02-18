@@ -8,7 +8,7 @@ module.exports = {
   },
   test: {
     username: "root",
-    password: "Beemysql4",
+    password: "root",
     database: "testdb",
     host: "localhost",
     dialect: "mysql",
