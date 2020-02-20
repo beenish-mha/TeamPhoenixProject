@@ -11,9 +11,13 @@ module.exports = function(app) {
     });
   });
 
-  // Load example page and pass in an example by id
-  app.get("*", function(req, res) {
+  // Load join page
+  app.get("/join", function(req, res) {
     res.render("join");
+  });
+  // Load signIn page
+  app.get("/signin", function(req, res) {
+    res.render("signin");
   });
 
   // Render 404 page for any unmatched routes
