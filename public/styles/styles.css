@@ -1,3 +1,8 @@
+@media (max-width: 1024px) {
+}
+@media (max-width: 812px) {
+}
+
 .list-group-item {
   line-height: 2.5;
 }
@@ -17,4 +22,7 @@
 .main-title {
   padding-left: 300px;
   padding-top: 45px;
+}
+.join-form {
+  margin: 40px;
 }

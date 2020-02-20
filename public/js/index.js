@@ -1,3 +1,6 @@
+//myCookBook project code
+//const $btnJoin = $(".btn-join");
+
 // Get references to page elements
 var $exampleText = $("#example-text");
 var $exampleDescription = $("#example-description");
