@@ -1,9 +1,10 @@
 var db = require("../models");
-//const axios = require("axios");
+const axios = require("axios");
 
 module.exports = function(app) {
   // Get all recipes
-  app.get("/api/recipes", function(req, res) {
+
+  app.get("/api/recipes/", function(req, res) {
     db.Recipe.findAll({
       include: [db.Ingredient, db.DietryRequirement]
     })
@@ -11,6 +12,7 @@ module.exports = function(app) {
         res.json(recipes);
       })
       .catch(err => {
+        console.error(err);
         res.status(404).end();
       });
   });
