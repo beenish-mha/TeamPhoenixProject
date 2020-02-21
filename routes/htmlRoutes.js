@@ -15,15 +15,14 @@ module.exports = function(app) {
     res.render("signin");
   });
 
-  app.get("/api/recipes/:name", function(req, res) {
+  app.get("/recipelist/:name", function(req, res) {
     db.Recipe.findOne({
       where: {
         name: req.params.name
       },
       include: [db.Ingredient, db.DietryRequirement]
-    }).then(dbRecipe => {
-      console.log("beenish" + dbRecipe);
-      res.render("recipelist", dbRecipe);
+    }).then(recipe => {
+      res.render("recipelist", recipe);
     });
   });
 
