@@ -11,8 +11,10 @@ module.exports = function(sequelize, DataTypes) {
         allowNull: false
       }
     });
-    Recipe.belongsToMany(models.DietryRequirement, { through: "RecipeRequirement"});
-    Recipe.belongsToMany(models.Ingredient, { through: "RecipeIngredient"});
+    Recipe.belongsToMany(models.DietryRequirement, {
+      through: "RecipeRequirement"
+    });
+    Recipe.belongsToMany(models.Ingredient, { through: "RecipeIngredient" });
   };
   return Recipe;
 };
