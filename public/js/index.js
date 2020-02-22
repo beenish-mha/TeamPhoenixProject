@@ -6,6 +6,24 @@ var $exampleText = $("#example-text");
 var $exampleDescription = $("#example-description");
 var $submitBtn = $("#submit");
 var $exampleList = $("#example-list");
+const $userSubmit = $("#userSubmit");
+
+$userSubmit.on("click", function(){
+  var userName = document.getElementById("joinUserName").value;
+  var password = document.getElementById("joinPassword").value;
+
+  console.log(userName);
+  console.log(password);
+});
+
+// $userLogin.on("click", function(){
+//   console.log("clicked");
+// });
+
+function process(){
+  console.log("clicked")
+};
+
 
 // The API object contains methods for each kind of request we'll make
 var API = {
@@ -96,7 +114,12 @@ var handleDeleteBtnClick = function() {
     refreshExamples();
   });
 };
-
 // Add event listeners to the submit and delete buttons
-$submitBtn.on("click", handleFormSubmit);
-$exampleList.on("click", ".delete", handleDeleteBtnClick);
+$submitBtn.on("click", function(){
+  debugger;
+  var searchResult = document.getElementById("recipeSearch").value;
+  console.log(searchResult);
+  location.href = "recipelist/" + searchResult;
+});
+
+$exampleList.on("click", handleDeleteBtnClick);
