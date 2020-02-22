@@ -6,11 +6,11 @@ module.exports = function(sequelize, DataTypes) {
   });
 
   Recipe.associate = models => {
-    Recipe.belongsTo(models.User, {
-      foreignKey: {
-        allowNull: false
-      }
-    });
+    // Recipe.belongsTo(models.User, {
+    //   foreignKey: {
+    //     allowNull: false
+    //   }
+    // });
     Recipe.belongsToMany(models.DietryRequirement, {
       through: "RecipeRequirement"
     });
