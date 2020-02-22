@@ -7,119 +7,43 @@ var $exampleDescription = $("#example-description");
 var $submitBtn = $("#submit");
 var $exampleList = $("#example-list");
 const $userSubmit = $("#userSubmit");
+const $btnSaveRecipe = $(".btn-save-recipe");
+const $recipeName = $(".recipe-name");
+const $recipeIngredients = $(".recipe-ingredients");
+const $recipeMethod = $(".recipe-method");
+const $recipeDr = $(".recipe-dr");
+const $recipeImage = $(".recipe-image");
 
-$userSubmit.on("click", function(){
-  var userName = document.getElementById("joinUserName").value;
-  var password = document.getElementById("joinPassword").value;
-
-  console.log(userName);
-  console.log(password);
+$submitBtn.on("click", function() {
+  var searchResult = document.getElementById("recipeSearch").value;
+  location.href = "recipelist/" + searchResult;
 });
 
-// $userLogin.on("click", function(){
-//   console.log("clicked");
-// });
-
-function process(){
-  console.log("clicked")
-};
-
-
-// The API object contains methods for each kind of request we'll make
 var API = {
-  saveExample: function(example) {
+  saveRecipe: function(example) {
     return $.ajax({
       headers: {
         "Content-Type": "application/json"
       },
       type: "POST",
-      url: "api/examples",
+      url: "api/recipes",
       data: JSON.stringify(example)
     });
-  },
-  getExamples: function() {
-    return $.ajax({
-      url: "api/examples",
-      type: "GET"
-    });
-  },
-  deleteExample: function(id) {
-    return $.ajax({
-      url: "api/examples/" + id,
-      type: "DELETE"
-    });
   }
 };
 
-// refreshExamples gets new examples from the db and repopulates the list
-var refreshExamples = function() {
-  API.getExamples().then(function(data) {
-    var $examples = data.map(function(example) {
-      var $a = $("<a>")
-        .text(example.text)
-        .attr("href", "/example/" + example.id);
-
-      var $li = $("<li>")
-        .attr({
-          class: "list-group-item",
-          "data-id": example.id
-        })
-        .append($a);
-
-      var $button = $("<button>")
-        .addClass("btn btn-danger float-right delete")
-        .text("ｘ");
-
-      $li.append($button);
-
-      return $li;
-    });
-
-    $exampleList.empty();
-    $exampleList.append($examples);
-  });
-};
-
-// handleFormSubmit is called whenever we submit a new example
-// Save the new example to the db and refresh the list
-var handleFormSubmit = function(event) {
-  event.preventDefault();
-
-  var example = {
-    text: $exampleText.val().trim(),
-    description: $exampleDescription.val().trim()
+const recipeSubmit = function(event) {
+  var newRecipe = {
+    name: $recipeName.val().trim(),
+    ingredients: $recipeIngredients.val().trim(),
+    method: $recipeMethod.val().trim(),
+    dietryRequirement: $recipeDr.val().trim(),
+    image: $recipeImage.val().trim(),
+    UserId: 1
   };
-
-  if (!(example.text && example.description)) {
-    alert("You must enter an example text and description!");
-    return;
-  }
-
-  API.saveExample(example).then(function() {
-    refreshExamples();
-  });
-
-  $exampleText.val("");
-  $exampleDescription.val("");
-};
-
-// handleDeleteBtnClick is called when an example's delete button is clicked
-// Remove the example from the db and refresh the list
-var handleDeleteBtnClick = function() {
-  var idToDelete = $(this)
-    .parent()
-    .attr("data-id");
-
-  API.deleteExample(idToDelete).then(function() {
-    refreshExamples();
+  API.saveRecipe(newRecipe).then(function() {
+    console.log("new recipe added");
   });
 };
-// Add event listeners to the submit and delete buttons
-$submitBtn.on("click", function(){
-  debugger;
-  var searchResult = document.getElementById("recipeSearch").value;
-  console.log(searchResult);
-  location.href = "recipelist/" + searchResult;
-});
-
-$exampleList.on("click", handleDeleteBtnClick);
+// $exampleList.on("click", handleDeleteBtnClick);
+$btnSaveRecipe.on("click", recipeSubmit);

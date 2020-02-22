@@ -4,8 +4,7 @@
         <button type="button" class="btn btn-dark btn-secondary" style="margin:5px;"><a href="/">Home</a></button>
         <button type="button" class="btn btn-dark btn-join" style="margin:5px;"><a href="/join">Join</a></button>
         <button type="button" class="btn btn-dark" style="margin:5px;"><a href="/signin">SignIn</a></button>
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Search</button>
+        <button type="button" class="btn btn-dark" style="margin:5px;"><a href="/myownrecipe">Create recipe</a></button>
     </form>
 </nav>
 <h2> {{dataValues.name}} Recipe </h2>
@@ -21,30 +20,27 @@
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title">Ingredients</h5>
-                <p class="card-text">{{#each dataValues.Ingredients}}<p>
-    {{this.dataValues.name}}
-    </p>
-    {{/each}}
-    {{#each dataValues.DietryRequirements}}<p>
-        {{this.dataValues.name}}
-    </p>
-    {{/each}}{{#each dataValues.Ingredients}}<p>
-    {{this.dataValues.name}}
-    </p>
-    {{/each}}
-    {{#each dataValues.DietryRequirements}}<p>
-        {{this.dataValues.name}}
-    </p>
-    {{/each}}</p>
+                <p class="card-text">
+                    {{#each dataValues.Ingredients}}<p>
+                        {{this.dataValues.name}}
+                    </p>
+                    {{/each}}
+                    <div>
+                        <h5>Dietary Requirements</h5>
+                        {{#each dataValues.DietryRequirements}}<p>
+                            {{this.dataValues.name}}
+                        </p>
+                        {{/each}}</p>
             </div>
         </div>
     </div>
-    <div class="col-sm-5">
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">Method</h5>
-                <p class="card-text">{{dataValues.method}}</p>
-            </div>
+</div>
+<div class="col-sm-5">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Method</h5>
+            <p class="card-text">{{dataValues.method}}</p>
         </div>
     </div>
+</div>
 </div>

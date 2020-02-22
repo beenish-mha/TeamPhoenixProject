@@ -132,17 +132,43 @@ module.exports = function(app) {
 
   // Create a new recipe
   app.post("/api/recipes", function(req, res) {
-    db.Recipe.create(req.body)
-      .then(function(recipe) {
-        recipe.setIngredients(req.body.ingredients);
-        return recipe;
-      })
-      .then(recipe => {
-        recipe.setDietryRequirements(req.body.dietryRequirements);
-        return recipe;
-      })
-      .then(recipe => {
-        res.json(recipe);
-      });
+    console.log(req.body);
+    db.Recipe.create(
+      {
+        name: req.body.name,
+        method: req.body.method,
+        image: req.body.image,
+        UserId: req.body.UserId,
+        Ingredients: [
+          {
+            name: req.body.ingredients
+          }
+        ],
+        DietryRequirements: [
+          {
+            name: req.body.dietryRequirement
+          }
+        ]
+      },
+      {
+        include: [db.Ingredient, db.DietryRequirement]
+      }
+    ).then(recipe => {
+      res.json(recipe);
+    });
   });
 };
+
+//   app.post("/api/recipes", function(req, res) {
+//     console.log(req.body);
+//     db.Recipe.create(req.body).then(function(dbRecipes) {
+//       console.log(dbRecipes);
+//       // create ingredient
+//       recipe.setIngredients(req.body.ingredients);
+//       return recipe;
+
+//       // create dietry requirement
+//       res.json(dbRecipes);
+//     });
+//   });
+// };
