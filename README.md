@@ -6,7 +6,7 @@ This Cookbook is a hub for food lovers to save their recipes in a place that is 
 
 As a team of two, we split the project into two main sections that needed completing, the front-end and the back-end
 
-We are able to create a professional web page that allows food lovers to create recipes so they can enjoy their favorite meals.​
+We are able to create a professional web page that allows food lovers to create recipes so they can enjoy their favorite meals..
 
 ---
 
