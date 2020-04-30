@@ -10,11 +10,11 @@ We are able to create a professional web page that allows food lovers to create 
 
 ---
 
-![screenshot of the app](public\images\myCookBook1.jpg)
+![screenshot of the app](https://github.com/beenish-mha/TeamPhoenixProject/blob/master/public/images/myCookBook1.jpg)
 
-![screenshot of the app](public\images\myCookBook2.jpg)
+![screenshot of the app](https://github.com/beenish-mha/TeamPhoenixProject/blob/master/public/images/myCookBook2.jpg)
 
-![screenshot of the app](public\images\myCookBook3.jpg)
+![screenshot of the app](https://github.com/beenish-mha/TeamPhoenixProject/blob/master/public/images/myCookBook3.jpg)
 
 ---
 
